@@ -1,7 +1,10 @@
 MediaPickerManager
 ==================
+- allows to simplify usage of UIImagePickerController, 
+- more code clarity, 
+- iPad and iPhone support.
 
-### Shared object that allow to simplify UIImagePickerController 
+### Shared object that
 ```objective-c
 [MediaPickerManager sharedInstance]
 ```
