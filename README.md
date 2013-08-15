@@ -1,6 +1,7 @@
 MediaPickerManager
 ==================
 - allows to simplify usage of UIImagePickerController, 
+- no need to manipulate UIPopoverController / UIActionSheet
 - more code clarity, 
 - iPad and iPhone support.
 
