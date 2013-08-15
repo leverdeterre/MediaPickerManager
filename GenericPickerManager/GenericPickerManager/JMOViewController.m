@@ -40,7 +40,7 @@
     [[MediaPickerManager sharedInstance] videoSelected:sender];
 }
 
-#pragma mark FTVMediaPickerManagerDelegate
+#pragma marJMMMediaPickerManagerDelegate
 
 - (void)bkImagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info
 {
