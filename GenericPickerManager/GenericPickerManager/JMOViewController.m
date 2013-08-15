@@ -31,6 +31,8 @@
     [MediaPickerManager sharedInstance].type = JMMediaTypePhotos;
     [MediaPickerManager sharedInstance].delegate = self;
     [[MediaPickerManager sharedInstance] photoSelected:sender];
+    
+    NSLog(@"[MediaPickerManager sharedInstance] -> %@",[MediaPickerManager sharedInstance]);
 }
 
 
@@ -38,6 +40,8 @@
     [MediaPickerManager sharedInstance].type = JMMediaTypeVideos;
     [MediaPickerManager sharedInstance].delegate = self;
     [[MediaPickerManager sharedInstance] videoSelected:sender];
+    
+    NSLog(@"[MediaPickerManager sharedInstance] -> %@",[MediaPickerManager sharedInstance]);
 }
 
 #pragma marJMMMediaPickerManagerDelegate

@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    JMMediaTypeCameraPhoto = 1UL << 0,
-    JMMediaTypeCameraVideo = 1UL << 1,
-    JMMediaTypeLibraryPhoto = 1UL << 2,
-    JMMediaTypeLibraryVideo = 1UL << 3,
+    JMMediaTypeCameraPhoto = 0,
+    JMMediaTypeCameraVideo = 1 << 0,
+    JMMediaTypeLibraryPhoto = 1 << 1,
+    JMMediaTypeLibraryVideo = 1 << 2,
     JMMediaTypeCamera = JMMediaTypeCameraPhoto | JMMediaTypeCameraVideo,
     JMMediaTypeLibrary = JMMediaTypeLibraryPhoto | JMMediaTypeLibraryVideo,
     JMMediaTypePhotos = JMMediaTypeCameraPhoto | JMMediaTypeLibraryPhoto,

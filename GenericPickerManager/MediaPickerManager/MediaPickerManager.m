@@ -161,7 +161,22 @@
     }
 }
 
+-(NSString *)description
+{
+    NSMutableString *str = [NSMutableString new];
+    [str appendString:@"#POSSIBLE VALUES:\n"];
+    [str appendFormat:@"JMMediaTypeCameraPhoto -> %d\n",JMMediaTypeCameraPhoto];
+    [str appendFormat:@"JMMediaTypeCameraVideo -> %d\n",JMMediaTypeCameraVideo];
+    [str appendFormat:@"JMMediaTypeLibraryPhoto -> %d\n",JMMediaTypeLibraryPhoto];
+    [str appendFormat:@"JMMediaTypeLibraryVideo -> %d\n",JMMediaTypeLibraryVideo];
+    [str appendFormat:@"JMMediaTypeCamera -> %d\n",JMMediaTypeCamera];
+    [str appendFormat:@"JMMediaTypeLibrary -> %d\n",JMMediaTypeLibrary];
+    [str appendFormat:@"JMMediaTypePhotos -> %d\n",JMMediaTypePhotos];
+    [str appendFormat:@"JMMediaTypeAll -> %d\n",JMMediaTypeAll];
+    [str appendFormat:@"#SELECTED TYPE: %d\n", self.type];
 
+    return str;
+}
 
 
 
