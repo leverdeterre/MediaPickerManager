@@ -19,18 +19,32 @@ typedef enum {
     JMMediaTypeAll = JMMediaTypeCamera | JMMediaTypeLibrary,
 } JMMediaType;
 
+typedef enum {
+    JMMediaPresentationStylePresentModal = 0,
+    JMMediaPresentationStyleAddSubView = 1,
+    JMMediaPresentationStyleCustom = 2
+} JMMediaPresentationStyle;
+
+
+
 @protocol JMMediaPickerManagerDelegate <NSObject>
 - (void)bkImagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info;
+@optional
+- (void)customPresentImagePicker:(UIViewController *)controller;
+- (void)customDismissImagePicker:(UIViewController *)controller;
 @end
 
 @interface MediaPickerManager : NSObject
 
 @property (assign) JMMediaType type;
+@property (assign) JMMediaPresentationStyle presentationStyle;
+
 @property (weak, nonatomic) UIViewController <JMMediaPickerManagerDelegate> *delegate;
 
 + (instancetype)sharedInstance;
 
 - (IBAction)photoSelected:(id)sender;
 - (IBAction)videoSelected:(id)sender;
+- (void)presentImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType andTypes:(NSArray *)arrayOfTypes;
 
 @end

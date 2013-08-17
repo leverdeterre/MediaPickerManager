@@ -121,11 +121,34 @@
 }
 
 #pragma mark -
+-(void)presentImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType andTypes:(NSArray *)arrayOfTypes
+{
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        
+        self.imagePickerController.sourceType = sourceType;
+        if (arrayOfTypes) {
+            self.imagePickerController.mediaTypes = arrayOfTypes;
+        }
+        
+        [self presentImagePicker];
+    }
+    else {
+        NSLog(@"UIImagePickerController not available for that source");
+    }
+}
 
 -(void)presentImagePicker
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self.delegate presentViewController:self.imagePickerController  animated:YES completion:nil];
+        if (self.presentationStyle == JMMediaPresentationStylePresentModal) {
+            [self.delegate presentViewController:self.imagePickerController  animated:YES completion:nil];
+        }
+        else if (self.presentationStyle == JMMediaPresentationStyleAddSubView) {
+            [self.delegate.view addSubview:self.imagePickerController.view];
+        }
+        else {
+            [self.delegate customPresentImagePicker:self.imagePickerController];
+        }
     } else {
         self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.imagePickerController];
         self.popoverController.delegate = self;
@@ -140,7 +163,15 @@
     NSLog(@"%s",__FUNCTION__);
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        if (self.presentationStyle == JMMediaPresentationStylePresentModal) {
+            [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        }
+        else if (self.presentationStyle == JMMediaPresentationStyleAddSubView) {
+            [self.delegate.view removeFromSuperview];
+        }
+        else {
+            [self.delegate customDismissImagePicker:self.imagePickerController];
+        }        
     }
     else {
         [self.popoverController dismissPopoverAnimated:YES];
@@ -154,7 +185,15 @@
     NSLog(@"%s",__FUNCTION__);
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        if (self.presentationStyle == JMMediaPresentationStylePresentModal) {
+            [self.delegate dismissViewControllerAnimated:YES completion:nil];
+        }
+        else if (self.presentationStyle == JMMediaPresentationStyleAddSubView) {
+            [self.delegate.view removeFromSuperview];
+        }
+        else {
+            [self.delegate customDismissImagePicker:self.imagePickerController];
+        }
     }
     else {
         [self.popoverController dismissPopoverAnimated:YES];
