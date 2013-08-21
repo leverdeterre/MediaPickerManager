@@ -28,12 +28,13 @@ typedef enum {
 
 ### Enum to configure the the presentation of ImagePicker
 
+```objective-c
 typedef enum {
     JMMediaPresentationStylePresentModal = 0,
     JMMediaPresentationStyleAddSubView = 1,
     JMMediaPresentationStyleCustom = 2
 } JMMediaPresentationStyle;
-
+```
 
 ### Usage ... very simple with a protocol 
 
