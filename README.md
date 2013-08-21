@@ -26,11 +26,24 @@ typedef enum {
 } JMMediaType;
 ```
 
+### Enum to configure the the presentation of ImagePicker
+
+typedef enum {
+    JMMediaPresentationStylePresentModal = 0,
+    JMMediaPresentationStyleAddSubView = 1,
+    JMMediaPresentationStyleCustom = 2
+} JMMediaPresentationStyle;
+
+
 ### Usage ... very simple with a protocol 
 
 ```objective-c
 @protocol JMMediaPickerManagerDelegate <NSObject>
 - (void)bkImagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info;
+@optional
+//Your are responsible of the present and dismiss ..
+- (void)customPresentImagePicker:(UIViewController *)controller;
+- (void)customDismissImagePicker:(UIViewController *)controller;
 @end
 ```
 
