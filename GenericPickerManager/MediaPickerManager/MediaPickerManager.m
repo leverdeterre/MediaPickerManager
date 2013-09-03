@@ -7,6 +7,8 @@
 
 #import "MediaPickerManager.h"
 
+#import <MobileCoreServices/MobileCoreServices.h>
+
 @interface MediaPickerManager () <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIPopoverControllerDelegate>
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIPopoverController *popoverController;
@@ -77,6 +79,7 @@
     if ([buttonTitle isEqualToString:@"Prendre une vidéo"]) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.imagePickerController.mediaTypes = @[(NSString *)kUTTypeMovie];
         }
         else {
             UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Cet appareil ne peut pas prendre de vidéos" delegate:self cancelButtonTitle:@"Fermer" otherButtonTitles:nil];
@@ -86,6 +89,7 @@
     else if ([buttonTitle isEqualToString:@"Prendre photo"]) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.imagePickerController.mediaTypes = @[(NSString *)kUTTypeImage];
         }
         else {
             UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Cet appareil ne peut pas prendre de photos" delegate:self cancelButtonTitle:@"Fermer" otherButtonTitles:nil];
