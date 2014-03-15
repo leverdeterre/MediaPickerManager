@@ -5,6 +5,11 @@ MediaPickerManager
 - more code clarity, 
 - iPad and iPhone support.
 
+### Release note
+v0.0.3 : Framework localization + bundle generation
+v0.0.2 : Refactor
+
+
 ### Shared object that
 ```objective-c
 [MediaPickerManager sharedInstance]
