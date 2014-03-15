@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C2BCDFB618D45A2C00A4E86B /* MediaPickerManagerBundle */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C2BCDFB718D45A2C00A4E86B /* Build configuration list for PBXAggregateTarget "MediaPickerManagerBundle" */;
+			buildPhases = (
+				C2BCDFBA18D45A6100A4E86B /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = MediaPickerManagerBundle;
+			productName = MediaPickerManagerBundle;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		C205EF1B17BD650F0023B227 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C205EF1A17BD650F0023B227 /* UIKit.framework */; };
 		C205EF1D17BD650F0023B227 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C205EF1C17BD650F0023B227 /* Foundation.framework */; };
@@ -20,6 +34,9 @@
 		C205EF3717BD650F0023B227 /* JMOViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = C205EF3517BD650F0023B227 /* JMOViewController_iPhone.xib */; };
 		C205EF3A17BD650F0023B227 /* JMOViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = C205EF3817BD650F0023B227 /* JMOViewController_iPad.xib */; };
 		C205EF4317BD65620023B227 /* MediaPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C205EF4217BD65620023B227 /* MediaPickerManager.m */; };
+		C2BCDFAC18D450F400A4E86B /* MediaPickerManager.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2BCDFAE18D450F400A4E86B /* MediaPickerManager.strings */; };
+		C2BCDFB518D4561800A4E86B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BCDFB418D4561700A4E86B /* MobileCoreServices.framework */; };
+		C2BCDFBC18D45BA400A4E86B /* MediaPickerManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2BCDFBB18D45BA400A4E86B /* MediaPickerManager.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +59,12 @@
 		C205EF3917BD650F0023B227 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/JMOViewController_iPad.xib; sourceTree = "<group>"; };
 		C205EF4117BD65620023B227 /* MediaPickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaPickerManager.h; sourceTree = "<group>"; };
 		C205EF4217BD65620023B227 /* MediaPickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaPickerManager.m; sourceTree = "<group>"; };
+		C2BCDFAD18D450F400A4E86B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MediaPickerManager.strings; sourceTree = "<group>"; };
+		C2BCDFAF18D4511900A4E86B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MediaPickerManager.strings; sourceTree = "<group>"; };
+		C2BCDFB018D455F100A4E86B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C2BCDFB218D455FC00A4E86B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C2BCDFB418D4561700A4E86B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C2BCDFBB18D45BA400A4E86B /* MediaPickerManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MediaPickerManager.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BCDFB518D4561800A4E86B /* MobileCoreServices.framework in Frameworks */,
 				C205EF1B17BD650F0023B227 /* UIKit.framework in Frameworks */,
 				C205EF1D17BD650F0023B227 /* Foundation.framework in Frameworks */,
 				C205EF1F17BD650F0023B227 /* CoreGraphics.framework in Frameworks */,
@@ -78,6 +102,9 @@
 		C205EF1917BD650F0023B227 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2BCDFB418D4561700A4E86B /* MobileCoreServices.framework */,
+				C2BCDFB218D455FC00A4E86B /* CoreImage.framework */,
+				C2BCDFB018D455F100A4E86B /* ImageIO.framework */,
 				C205EF4017BD65620023B227 /* MediaPickerManager */,
 				C205EF1A17BD650F0023B227 /* UIKit.framework */,
 				C205EF1C17BD650F0023B227 /* Foundation.framework */,
@@ -117,6 +144,8 @@
 		C205EF4017BD65620023B227 /* MediaPickerManager */ = {
 			isa = PBXGroup;
 			children = (
+				C2BCDFBB18D45BA400A4E86B /* MediaPickerManager.bundle */,
+				C2BCDFAE18D450F400A4E86B /* MediaPickerManager.strings */,
 				C205EF4117BD65620023B227 /* MediaPickerManager.h */,
 				C205EF4217BD65620023B227 /* MediaPickerManager.m */,
 			);
@@ -159,6 +188,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = C205EF0E17BD650F0023B227;
 			productRefGroup = C205EF1817BD650F0023B227 /* Products */;
@@ -166,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				C205EF1617BD650F0023B227 /* GenericPickerManager */,
+				C2BCDFB618D45A2C00A4E86B /* MediaPickerManagerBundle */,
 			);
 		};
 /* End PBXProject section */
@@ -177,7 +208,9 @@
 			files = (
 				C205EF2517BD650F0023B227 /* InfoPlist.strings in Resources */,
 				C205EF2D17BD650F0023B227 /* Default.png in Resources */,
+				C2BCDFBC18D45BA400A4E86B /* MediaPickerManager.bundle in Resources */,
 				C205EF2F17BD650F0023B227 /* Default@2x.png in Resources */,
+				C2BCDFAC18D450F400A4E86B /* MediaPickerManager.strings in Resources */,
 				C205EF3117BD650F0023B227 /* Default-568h@2x.png in Resources */,
 				C205EF3717BD650F0023B227 /* JMOViewController_iPhone.xib in Resources */,
 				C205EF3A17BD650F0023B227 /* JMOViewController_iPad.xib in Resources */,
@@ -185,6 +218,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2BCDFBA18D45A6100A4E86B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\necho \"Building bundle.\"\nif [ -d ./MediaPickerManager/MediaPickerManager.bundle ]; then\n    rm ./MediaPickerManager/MediaPickerManager.bundle\nelse\n    mkdir ./MediaPickerManager/MediaPickerManager.bundle\nfi\ncp -r ./MediaPickerManager/en.lproj ./MediaPickerManager/MediaPickerManager.bundle\ncp -r ./MediaPickerManager/fr.lproj ./MediaPickerManager/MediaPickerManager.bundle";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C205EF1317BD650F0023B227 /* Sources */ = {
@@ -223,6 +272,15 @@
 				C205EF3917BD650F0023B227 /* en */,
 			);
 			name = JMOViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		C2BCDFAE18D450F400A4E86B /* MediaPickerManager.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2BCDFAD18D450F400A4E86B /* en */,
+				C2BCDFAF18D4511900A4E86B /* fr */,
+			);
+			name = MediaPickerManager.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -308,6 +366,20 @@
 			};
 			name = Release;
 		};
+		C2BCDFB818D45A2C00A4E86B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C2BCDFB918D45A2C00A4E86B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -325,6 +397,15 @@
 			buildConfigurations = (
 				C205EF3E17BD650F0023B227 /* Debug */,
 				C205EF3F17BD650F0023B227 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2BCDFB718D45A2C00A4E86B /* Build configuration list for PBXAggregateTarget "MediaPickerManagerBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2BCDFB818D45A2C00A4E86B /* Debug */,
+				C2BCDFB918D45A2C00A4E86B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

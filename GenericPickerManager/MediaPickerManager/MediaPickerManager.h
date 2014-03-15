@@ -7,7 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+
+typedef NS_OPTIONS(NSInteger,  JMMediaType) {
     JMMediaTypeCameraPhoto = 0,
     JMMediaTypeCameraVideo = 1 << 0,
     JMMediaTypeLibraryPhoto = 1 << 1,
@@ -17,18 +18,18 @@ typedef enum {
     JMMediaTypePhotos = JMMediaTypeCameraPhoto | JMMediaTypeLibraryPhoto,
     JMMediaTypeVideos = JMMediaTypeCameraVideo | JMMediaTypeLibraryVideo,
     JMMediaTypeAll = JMMediaTypeCamera | JMMediaTypeLibrary,
-} JMMediaType;
+};
 
-typedef enum {
-    JMMediaPresentationStylePresentModal = 0,
-    JMMediaPresentationStyleAddSubView = 1,
-    JMMediaPresentationStyleCustom = 2
-} JMMediaPresentationStyle;
 
+typedef NS_ENUM(NSInteger,  JMMediaPresentationStyle) {
+    JMMediaPresentationStylePresentModal,
+    JMMediaPresentationStyleAddSubView,
+    JMMediaPresentationStyleCustom
+};
 
 
 @protocol JMMediaPickerManagerDelegate <NSObject>
-- (void)bkImagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info;
+- (void)imagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info;
 @optional
 - (void)customPresentImagePicker:(UIViewController *)controller;
 - (void)customDismissImagePicker:(UIViewController *)controller;
@@ -43,8 +44,7 @@ typedef enum {
 
 + (instancetype)sharedInstance;
 
-- (IBAction)photoSelected:(id)sender;
-- (IBAction)videoSelected:(id)sender;
-- (void)presentImagePickerWithSourceType:(UIImagePickerControllerSourceType)sourceType andTypes:(NSArray *)arrayOfTypes;
+- (void)presentPhotosFrom:(id)sender;
+- (void)presentVideosFrom:(id)sender;
 
 @end

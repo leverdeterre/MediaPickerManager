@@ -27,26 +27,28 @@
 }
 
 
-- (IBAction)photoSelected:(id)sender {
+- (IBAction)photoSelected:(id)sender
+{
     [MediaPickerManager sharedInstance].type = JMMediaTypePhotos;
     [MediaPickerManager sharedInstance].delegate = self;
-    [[MediaPickerManager sharedInstance] photoSelected:sender];
+    [[MediaPickerManager sharedInstance] presentPhotosFrom:sender];
     
     NSLog(@"[MediaPickerManager sharedInstance] -> %@",[MediaPickerManager sharedInstance]);
 }
 
 
-- (IBAction)videoSelected:(id)sender {
+- (IBAction)videoSelected:(id)sender
+{
     [MediaPickerManager sharedInstance].type = JMMediaTypeVideos;
     [MediaPickerManager sharedInstance].delegate = self;
-    [[MediaPickerManager sharedInstance] videoSelected:sender];
+    [[MediaPickerManager sharedInstance] presentVideosFrom:sender];
     
     NSLog(@"[MediaPickerManager sharedInstance] -> %@",[MediaPickerManager sharedInstance]);
 }
 
 #pragma marJMMMediaPickerManagerDelegate
 
-- (void)bkImagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)imagePickerControllerDidFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog(@"%s",__FUNCTION__);
     

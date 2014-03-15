@@ -17,7 +17,8 @@
 
 @implementation MediaPickerManager
 
-+ (instancetype)sharedInstance {
++ (instancetype)sharedInstance
+{
     static MediaPickerManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -36,11 +37,29 @@
     return self;
 }
 
-- (IBAction)photoSelected:(id)sender
+#pragma mark - Helper bundle
+
+- (NSBundle*)bundleWithName:(NSString*)name
+{
+    NSString *mainBundlePath = [[NSBundle mainBundle] resourcePath];
+    NSString *frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:name];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:frameworkBundlePath]){
+        return [NSBundle bundleWithPath:frameworkBundlePath];
+    }
+    return nil;
+}
+
+#define MediaPickerManagerNSLocalizedString(key, comment) \
+[[self bundleWithName:@"MediaPickerManager.bundle"] localizedStringForKey:(key) value:@"" table:@"MediaPickerManager"]
+
+#pragma mark -
+
+- (void)presentPhotosFrom:(id)sender
 {
     self.viewSelected = (UIView *)sender;
-    
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Annuler" destructiveButtonTitle:nil otherButtonTitles:@"Prendre photo", @"De la bibliothèque", nil];
+    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.cancel", nil)
+                                                destructiveButtonTitle:nil
+                                                otherButtonTitles:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.take.photo", nil), MediaPickerManagerNSLocalizedString(@"MediaPickerManager.from.library", nil), nil];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         UIViewController * root = [[[UIApplication sharedApplication] keyWindow] rootViewController];
@@ -51,9 +70,14 @@
     }
 }
 
-- (IBAction)videoSelected:(id)sender
+- (void)presentPhotosFromController:(id)sender
 {
-    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Annuler" destructiveButtonTitle:nil otherButtonTitles:@"Prendre une vidéo", @"De la bibliothèque", nil];
+
+}
+
+- (void)presentVideosFrom:(id)sender
+{
+    UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.take.video", nil), MediaPickerManagerNSLocalizedString(@"MediaPickerManager.from.library", nil), nil];
     self.viewSelected = (UIView *)sender;
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
@@ -64,7 +88,6 @@
         [actionSheet showFromRect:self.viewSelected.frame inView:self.viewSelected.superview animated:YES];
     }
 }
-
 
 #pragma mark UIActionSheetDelegate
 
@@ -76,27 +99,27 @@
     }
     
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
-    if ([buttonTitle isEqualToString:@"Prendre une vidéo"]) {
+    if ([buttonTitle isEqualToString:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.take.video", nil)]) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
             self.imagePickerController.mediaTypes = @[(NSString *)kUTTypeMovie];
         }
         else {
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Cet appareil ne peut pas prendre de vidéos" delegate:self cancelButtonTitle:@"Fermer" otherButtonTitles:nil];
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.error.title", nil)  message:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.video.error", nil) delegate:self cancelButtonTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.close", nil) otherButtonTitles:nil];
             [alertView show];
         }
     }
-    else if ([buttonTitle isEqualToString:@"Prendre photo"]) {
+    else if ([buttonTitle isEqualToString:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.take.photo", nil)]) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
             self.imagePickerController.mediaTypes = @[(NSString *)kUTTypeImage];
         }
         else {
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Cet appareil ne peut pas prendre de photos" delegate:self cancelButtonTitle:@"Fermer" otherButtonTitles:nil];
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.error.title", nil) message:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.photo.error", nil) delegate:self cancelButtonTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.close", nil) otherButtonTitles:nil];
             [alertView show];
         }
     }
-    else if ([buttonTitle isEqualToString:@"De la bibliothèque"]) {
+    else if ([buttonTitle isEqualToString:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.from.library", nil)]) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             NSMutableArray *arrayOfTypes = [NSMutableArray new];
@@ -109,7 +132,7 @@
             self.imagePickerController.mediaTypes = arrayOfTypes;
         }
         else {
-            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:@"Cet appareil n'a pas de galerie" delegate:self cancelButtonTitle:@"Fermer" otherButtonTitles:nil];
+            UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Erreur" message:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.gallery.error", nil) delegate:self cancelButtonTitle:MediaPickerManagerNSLocalizedString(@"MediaPickerManager.close", nil) otherButtonTitles:nil];
             [alertView show];
         }
     }
@@ -137,7 +160,7 @@
         [self presentImagePicker];
     }
     else {
-        NSLog(@"UIImagePickerController not available for that source");
+        //NSLog(@"UIImagePickerController not available for that source");
     }
 }
 
@@ -181,12 +204,12 @@
         [self.popoverController dismissPopoverAnimated:YES];
     }
     
-    [self.delegate bkImagePickerControllerDidFinishPickingMediaWithInfo:info];
+    [self.delegate imagePickerControllerDidFinishPickingMediaWithInfo:info];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    NSLog(@"%s",__FUNCTION__);
+    //NSLog(@"%s",__FUNCTION__);
 
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         if (self.presentationStyle == JMMediaPresentationStylePresentModal) {
@@ -202,23 +225,6 @@
     else {
         [self.popoverController dismissPopoverAnimated:YES];
     }
-}
-
--(NSString *)description
-{
-    NSMutableString *str = [NSMutableString new];
-    [str appendString:@"#POSSIBLE VALUES:\n"];
-    [str appendFormat:@"JMMediaTypeCameraPhoto -> %d\n",JMMediaTypeCameraPhoto];
-    [str appendFormat:@"JMMediaTypeCameraVideo -> %d\n",JMMediaTypeCameraVideo];
-    [str appendFormat:@"JMMediaTypeLibraryPhoto -> %d\n",JMMediaTypeLibraryPhoto];
-    [str appendFormat:@"JMMediaTypeLibraryVideo -> %d\n",JMMediaTypeLibraryVideo];
-    [str appendFormat:@"JMMediaTypeCamera -> %d\n",JMMediaTypeCamera];
-    [str appendFormat:@"JMMediaTypeLibrary -> %d\n",JMMediaTypeLibrary];
-    [str appendFormat:@"JMMediaTypePhotos -> %d\n",JMMediaTypePhotos];
-    [str appendFormat:@"JMMediaTypeAll -> %d\n",JMMediaTypeAll];
-    [str appendFormat:@"#SELECTED TYPE: %d\n", self.type];
-
-    return str;
 }
 
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EDAF04B4-837D-41EC-86EC-A879A364A415</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GenericPickerManager</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EA19B65B-F31D-4B1E-8343-BB684E7B679D</key>
+		<string>https://github.com/leverdeterre/MediaPickerManager.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GenericPickerManager/GenericPickerManager.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EA19B65B-F31D-4B1E-8343-BB684E7B679D</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/leverdeterre/MediaPickerManager.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EA19B65B-F31D-4B1E-8343-BB684E7B679D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EA19B65B-F31D-4B1E-8343-BB684E7B679D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MediaPickerManager</string>
+		</dict>
+	</array>
+</dict>
+</plist>

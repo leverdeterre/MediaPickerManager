@@ -1,0 +1,19 @@
+/* 
+  MediaPickerManager.strings
+  GenericPickerManager
+
+  Created by Jerome Morissard on 3/15/14.
+  Copyright (c) 2014 Jerome Morissard. All rights reserved.
+*/
+
+"MediaPickerManager.cancel" = "Annuler";
+"MediaPickerManager.close" = "Fermer";
+"MediaPickerManager.take.photo" = "Prendre photo";
+"MediaPickerManager.from.library" = "De la bibliothèque";
+"MediaPickerManager.take.video" = "Prendre une vidéo";
+
+//Erreur
+"MediaPickerManager.video.error" = "Cet appareil ne peut pas prendre de vidéos";
+"MediaPickerManager.photo.error" = "Cet appareil ne peut pas prendre de photos";
+"MediaPickerManager.gallery.error" = "Cet appareil n'a pas de galerie";
+"MediaPickerManager.error.title" = "Erreur";

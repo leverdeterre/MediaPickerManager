@@ -11,7 +11,9 @@ Pod::Spec.new do |s|
 	s.homepage = 'https://github.com/leverdeterre/MediaPickerManager'
 	s.source = {
 	:git => 'https://github.com/leverdeterre/MediaPickerManager.git',
-	:tag => "0.0.1"
+	:tag => “0.0.1”
 	}
 	s.source_files = 'GenericPickerManager/MediaPickerManager/*.{h,m}'
+	s.frameworks = 'MobileCoreServices'	
+	s.resources = 'GenericPickerManager/MediaPickerManager/MediaPickerManager.bundle'
 end

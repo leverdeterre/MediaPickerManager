@@ -1,0 +1,20 @@
+
+/*
+  MediaPickerManager.strings
+  GenericPickerManager
+
+  Created by Jerome Morissard on 3/15/14.
+  Copyright (c) 2014 Jerome Morissard. All rights reserved.
+*/
+
+"MediaPickerManager.cancel" = "Cancel";
+"MediaPickerManager.close" = "Close";
+"MediaPickerManager.take.photo" = "Take a picture";
+"MediaPickerManager.from.library" = "From the galery";
+"MediaPickerManager.take.video" = "Take a video";
+
+//Erreur
+"MediaPickerManager.video.error" = "This device can't take videos";
+"MediaPickerManager.photo.error" = "This device can't take pictures";
+"MediaPickerManager.gallery.error" = "This device doesn't has a gelery";
+"MediaPickerManager.error.title" = "Error";
