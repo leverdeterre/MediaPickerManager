@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 	s.name 	= 'MediaPickerManager'
-	s.version = ‘0.0.2’
+	s.version = '0.0.2'
 	s.requires_arc = true
 	s.author = {
 		'Morissard Jérome' => 'morissardj@gmail.com'
