@@ -137,7 +137,10 @@
         }
     }
     
-    [self presentImagePicker];
+    //http://stackoverflow.com/questions/25884801/ios-8-snapshotting-a-view-that-has-not-been-rendered-results-in-an-empty-snapsho
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self presentImagePicker];        
+    });
 }
 
 // Called when we cancel a view (eg. the user clicks the Home button). This is not called when the user clicks the cancel button.
@@ -157,7 +160,10 @@
             self.imagePickerController.mediaTypes = arrayOfTypes;
         }
         
-        [self presentImagePicker];
+        //http://stackoverflow.com/questions/25884801/ios-8-snapshotting-a-view-that-has-not-been-rendered-results-in-an-empty-snapsho
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self presentImagePicker];        
+        });
     }
     else {
         //NSLog(@"UIImagePickerController not available for that source");
