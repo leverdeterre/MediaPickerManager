@@ -31,7 +31,7 @@ typedef NS_OPTIONS(NSInteger,  JMMediaType) {
 };
 ```
 
-### Enum to configure the the presentation of ImagePicker
+### Enum to configure the presentation of ImagePicker
 
 ```objective-c
 typedef NS_ENUM(NSInteger,  JMMediaPresentationStyle) {
